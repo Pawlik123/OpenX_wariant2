@@ -4,15 +4,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import org.json.*;
+import org.json.JSONArray;
 
-public class PostsJSON {
+public class ParaseJSON {
 
-	private static JSONArray arrayJson;
+	private JSONArray array;
 
-	public void setPostsArray() {
+	public ParaseJSON(String url) {
 		try {
-			String url = "https://jsonplaceholder.typicode.com/posts";
 			URL obj = new URL(url);
 			HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 			con.setRequestMethod("GET");
@@ -24,13 +23,13 @@ public class PostsJSON {
 				response.append(inputLine);
 			}
 			in.close();
-			arrayJson = new JSONArray(response.toString());
+			array = new JSONArray(response.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public JSONArray getPostsArray() {
-		return arrayJson;
+	public JSONArray getJSONArray() {
+		return this.array;
 	}
 }
