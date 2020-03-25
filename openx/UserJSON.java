@@ -6,10 +6,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class UserJSON {
-	public void main(String[] args) {
+
+	private static JSONArray array;
+
+	public void setUserArray() {
 		try {
 			String url = "https://jsonplaceholder.typicode.com/users";
 			URL obj = new URL(url);
@@ -23,16 +25,16 @@ public class UserJSON {
 				response.append(inputLine);
 			}
 			in.close();
-			setPostsArray(response.toString());
-			JSONArray arrayJson = new JSONArray(response.toString());
-			JSONObject objJson = new JSONObject(arrayJson.get(0).toString());
-			System.out.print(objJson.get("name"));
+			array = new JSONArray(response.toString());
+			// JSONArray arrayJson = new JSONArray(response.toString());
+			// JSONObject objJson = new JSONObject(arrayJson.get(1).toString());
+			// System.out.print(objJson.get("email"));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void setPostsArray(String string) {
-
+	public JSONArray getUsersArray() {
+		return array;
 	}
 }

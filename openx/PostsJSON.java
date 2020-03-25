@@ -10,7 +10,7 @@ public class PostsJSON {
 
 	private static JSONArray arrayJson;
 
-	public void main(String[] args) {
+	public void setPostsArray() {
 		try {
 			String url = "https://jsonplaceholder.typicode.com/posts";
 			URL obj = new URL(url);
@@ -24,18 +24,10 @@ public class PostsJSON {
 				response.append(inputLine);
 			}
 			in.close();
-			// System.out.println("kk" + response.toS
-			setPostsArray(response.toString());
-			JSONArray arrayJson = new JSONArray(response.toString());
-			JSONObject objJson = new JSONObject(arrayJson.get(0).toString());
-			System.out.print(objJson.get("title"));
+			arrayJson = new JSONArray(response.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-
-	private void setPostsArray(String response) {
-		arrayJson = new JSONArray(response);
 	}
 
 	public JSONArray getPostsArray() {
