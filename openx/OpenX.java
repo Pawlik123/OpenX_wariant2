@@ -55,7 +55,7 @@ public class OpenX {
 					count++;
 				}
 			}
-			listOfPost.add(username + " napisa³(a) " + count + " postów");
+			listOfPost.add(username + " napisal(a) " + count + " postow");
 		}
 		return listOfPost;
 	}
