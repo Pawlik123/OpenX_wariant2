@@ -13,7 +13,7 @@ import org.json.JSONObject;
  *
  */
 public class OpenX {
-	
+
 	public static void main(String[] args) {
 		ParaseJSON user = new ParaseJSON("https://jsonplaceholder.typicode.com/users");
 		ParaseJSON posts = new ParaseJSON("https://jsonplaceholder.typicode.com/posts");
@@ -47,7 +47,7 @@ public class OpenX {
 		for (int j = 1; j <= userSize; j++) {
 			int count = 0;
 			userObj = (JSONObject) userlist.get(j - 1);
-			String h = userObj.getString("username");
+			String username = userObj.getString("username");
 			for (int a = 0; a < postsSize; a++) {
 				userObj = (JSONObject) postsList.get(a);
 				int q = userObj.getInt("userId");
@@ -55,7 +55,7 @@ public class OpenX {
 					count++;
 				}
 			}
-			listOfPost.add(h + " have " + count + " posts");
+			listOfPost.add(username + " napisa³(a) " + count + " postów");
 		}
 		return listOfPost;
 	}
@@ -89,6 +89,7 @@ public class OpenX {
 
 	/**
 	 * Metoda zwraca listê uzytkownikow,ktorzy mieszkaja najblizej
+	 * 
 	 * @param usersList
 	 * @return
 	 */
@@ -109,7 +110,7 @@ public class OpenX {
 					usersObj = (JSONObject) usersList.getJSONObject(u).getJSONObject("address").getJSONObject("geo");
 					double z = usersObj.getDouble("lat") - x;
 					double w = usersObj.getDouble("lng") - y;
-					if(count == 0) {
+					if (count == 0) {
 						dystans = Math.sqrt((Math.pow(z, 2) * Math.pow(w, 2)));
 					}
 					i = Math.sqrt((Math.pow(z, 2) * Math.pow(w, 2)));
