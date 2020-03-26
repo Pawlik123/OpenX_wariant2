@@ -6,7 +6,14 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * OpenX - Wariant 2.
+ * 
+ * @author Ela
+ *
+ */
 public class OpenX {
+	
 	public static void main(String[] args) {
 		ParaseJSON user = new ParaseJSON("https://jsonplaceholder.typicode.com/users");
 		ParaseJSON posts = new ParaseJSON("https://jsonplaceholder.typicode.com/posts");
@@ -25,7 +32,7 @@ public class OpenX {
 	}
 
 	/**
-	 * Metoda ta oblicza ile postów napisali userzy i zwraca listê Stringów
+	 * Metoda ta oblicza ile postow napisali userzy i zwraca listê Stringow
 	 * 
 	 * @param userlist
 	 * @param postsList
@@ -54,8 +61,8 @@ public class OpenX {
 	}
 
 	/**
-	 * Metoda sprawdza czy tytu³y postów s¹ unikalne i zwraca listê tytu³ów
-	 * które nie s¹
+	 * Metoda sprawdza czy tytuly postow sa unikalne i zwraca liste tytulow
+	 * ktore nie sa
 	 * 
 	 * @param postsList
 	 * @return
@@ -81,7 +88,7 @@ public class OpenX {
 	}
 
 	/**
-	 * Metoda zwraca listê u¿ytkowników,którzy mieszkaj¹ najbli¿ej
+	 * Metoda zwraca listê uzytkownikow,ktorzy mieszkaja najblizej
 	 * @param usersList
 	 * @return
 	 */

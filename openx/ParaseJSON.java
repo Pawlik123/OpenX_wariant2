@@ -10,6 +10,12 @@ public class ParaseJSON {
 
 	private JSONArray array;
 
+	/**
+	 * Wysyla zapytanie GEt do strony internetowej nastepnie tworzy liste typu
+	 * JSONArray.
+	 * 
+	 * @param url
+	 */
 	public ParaseJSON(String url) {
 		try {
 			URL obj = new URL(url);
@@ -29,6 +35,11 @@ public class ParaseJSON {
 		}
 	}
 
+	/**
+	 * Zwraca JSONowa liste.
+	 * 
+	 * @return
+	 */
 	public JSONArray getJSONArray() {
 		return this.array;
 	}
