@@ -20,6 +20,8 @@ public class OpenX {
 		List<String> nonUniqueTitles = howManyPostsAreSimilar(postslist);
 		System.out.println(nonUniqueTitles);
 
+		List<String> usersLocation = whatLocationUsers(userlist);
+		System.out.println(usersLocation);
 	}
 
 	/**
@@ -78,4 +80,45 @@ public class OpenX {
 		return listOfPost;
 	}
 
+	/**
+	 * Metoda zwraca listê u¿ytkowników,którzy mieszkaj¹ najbli¿ej
+	 * @param usersList
+	 * @return
+	 */
+	public static List<String> whatLocationUsers(JSONArray usersList) {
+		JSONObject usersObj;
+		List<String> listOfUsers = new ArrayList<String>();
+		for (int q = 0; q < usersList.length(); q++) {
+			usersObj = (JSONObject) usersList.getJSONObject(q).getJSONObject("address").getJSONObject("geo");
+			double x = usersObj.getDouble("lat");
+			double y = usersObj.getDouble("lng");
+
+			double i = 0;
+			int count = 0;
+			double dystans = 0;
+			int user = 0;
+			for (int u = 0; u < usersList.length(); u++) {
+				if (q != u) {
+					usersObj = (JSONObject) usersList.getJSONObject(u).getJSONObject("address").getJSONObject("geo");
+					double z = usersObj.getDouble("lat") - x;
+					double w = usersObj.getDouble("lng") - y;
+					if(count == 0) {
+						dystans = Math.sqrt((Math.pow(z, 2) * Math.pow(w, 2)));
+					}
+					i = Math.sqrt((Math.pow(z, 2) * Math.pow(w, 2)));
+					if (dystans >= i) {
+						dystans = i;
+						user = u;
+					}
+					count++;
+				}
+			}
+			JSONObject userObj = (JSONObject) usersList.get(q);
+			String firstUser = userObj.getString("username");
+			userObj = (JSONObject) usersList.get(user);
+			String secondUser = userObj.getString("username");
+			listOfUsers.add("User: " + firstUser + " life close to user: " + secondUser);
+		}
+		return listOfUsers;
+	}
 }
