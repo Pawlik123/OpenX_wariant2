@@ -18,6 +18,7 @@ public class OpenX {
 		ParaseJSON user = new ParaseJSON("https://jsonplaceholder.typicode.com/users");
 		ParaseJSON posts = new ParaseJSON("https://jsonplaceholder.typicode.com/posts");
 
+		
 		JSONArray userlist = user.getJSONArray();
 		JSONArray postslist = posts.getJSONArray();
 
