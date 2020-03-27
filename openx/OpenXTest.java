@@ -49,10 +49,4 @@ public class OpenXTest {
 		List<String> qqq=c.whatLocationUsers(userlist);
 		Assert.assertNotNull(qqq);
 	}
-	
-	
-	
-
-		
-
 }
